@@ -8,22 +8,22 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: guide/js/index.md
+      link: /guide/FrontEnd/HTML/index.md
     - theme: alt
       text: 在 github 上查看
-      link: https://github.com/vuejs/vitepress
+      link: https://github.com/Xi-Yuer/blog
 features:
   - icon: ⚡️
-    title: 前端
+    title: 前端日志
     details: FrontEnd
-    link: /guide/HTML/index.md
+    link: /guide/FrontEnd/HTML/index.md
   - icon: 💡
-    title: 后端
+    title: 后端手记
     details: BackEnd
-    link: /guide/Go/index.md
+    link: /guide/BackEnd/Node/index.md
   - icon: 🛠️
-    title: 常用工具
-    details: 搜集常用工具及类库
-    link : /guide/Website/index.md
+    title: 常用网站
+    details: 搜集常用及有趣的网站
+    link : /guide/Other/Website/index.md
 ---
 
