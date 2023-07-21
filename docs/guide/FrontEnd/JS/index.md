@@ -1,4 +1,6 @@
-## 实现 call 函数
+# JavaScript
+## JS语法集合
+#### 实现 call 函数
 
 ```js
 Function.prototype.wxcall = function (thisArg, ...arg) {
@@ -14,7 +16,7 @@ let result = foo.wxcall(null, 10, 20);
 console.log(result);
 ```
 
-## apply 函数实现
+#### apply 函数实现
 
 ```js
 Function.prototype.wxapply = function (thisArg, arrArg) {
@@ -32,7 +34,7 @@ foo.wxapply({}, [10, 20, 30]);
 foo.wxapply({}, [10, 20, 30]);
 ```
 
-## 实现 slice 函数
+#### 实现 slice 函数
 
 ```js
 Array.prototype.wxslice = function (start, end) {
@@ -46,7 +48,7 @@ Array.prototype.wxslice = function (start, end) {
 console.log([1, 2, 3, 4, 5, 6, 7, 8].wxslice(0, 2));
 ```
 
-## defineProperty
+#### defineProperty
 
 ```js
 const obj = {
@@ -87,7 +89,7 @@ console.log(obj.name); //监听到name属性被访问到了
 obj.name = 'Kobe'; //监听到name属性被设置了
 ```
 
-## Proxy 代理
+#### Proxy 代理
 
 ```js
 const obj = {
@@ -122,7 +124,7 @@ const objProxy = new Proxy(obj, {
 console.log(objProxy.name); // Kobe
 ```
 
-## 响应式原理
+#### 响应式原理
 
 ```js
 class Depend {
@@ -167,7 +169,7 @@ depend.addDepend(foo); //收集依赖
 objProxy.name = 'Lilei';
 ```
 
-## 迭代器
+#### 迭代器
 
 ```js
 //迭代器需要满足以下条件
@@ -211,7 +213,7 @@ console.log(index); //3
 // 迭代器优化
 ```
 
-## 迭代器生成函数
+#### 迭代器生成函数
 
 ```js
 function createArryIterator(arr) {
@@ -261,7 +263,7 @@ console.log(numberInterator.next()); //{ done: false, value: 4 }
 console.log(numberInterator.next()); //{ done: false, value: 5 }     ......
 ```
 
-## 迭代器对象
+#### 迭代器对象
 
 ```js
 // 该对象返回一个迭代器
@@ -303,7 +305,7 @@ for (const item of iterabalObj) {
 }
 ```
 
-## 生成器
+#### 生成器
 
 ```js
 // 生成器函数(*)
@@ -337,7 +339,7 @@ Generator.next(); //3
 Generator.next(); //4
 ```
 
-## 生成器函数执行流程
+#### 生成器函数执行流程
 
 ```js
 function* foo() {
@@ -362,7 +364,7 @@ console.log(Generator.next()); // { value: { name: 'tom', age: 18 }, done: false
 // 每个yield之前的代码若想返回某些值的话，可以将返回值写在yeild后面
 ```
 
-## 生成器参数问题
+#### 生成器参数问题
 
 ```js
 // 每段代码的参数问题
@@ -390,7 +392,7 @@ Generator.next(10);
 // 该参数会作为第一个yield的返回值  const n = yield 使用 n 接受该返回值
 ```
 
-## 宏任务&微任务
+#### 宏任务&微任务
 
 ```js
 // await 之后的代码属于微任务
@@ -529,7 +531,7 @@ console.log('script end');
 // })
 ```
 
-## 防抖
+#### 防抖
 
 ```js
 function debounce(fn, delay) {
@@ -556,7 +558,7 @@ function debounce(fn, delay, isImmediately = true) {
 }
 ```
 
-## 节流
+#### 节流
 
 ```js
 function throttle(fn, delay) {
@@ -571,7 +573,7 @@ function throttle(fn, delay) {
 }
 ```
 
-## 深拷贝
+#### 深拷贝
 
 ```js
 function isObject(value) {
@@ -624,7 +626,7 @@ const obj1 = {
 console.log(deepClone(obj1));
 ```
 
-## 事件总线
+#### 事件总线
 
 ```js
 class EventBus {
@@ -667,7 +669,7 @@ eventBus.emit('a', { name: 'Tom' });
 ```
 
 
-# 实现slice函数
+## 实现slice函数
     
 ```js
     
@@ -684,7 +686,7 @@ console.log([1, 2, 3, 4, 5, 6, 7, 8].wxslice(0, 2));
 ```          
                 
                 
-# 实现call函数
+## 实现call函数
     
 ```js
     
@@ -744,7 +746,7 @@ console.log(result);
 ```          
                 
                 
-# 生成迭代器的函数
+## 生成迭代器的函数
     
 ```js
     
@@ -799,35 +801,24 @@ console.log(numberInterator.next()); //{ done: false, value: 5 }     ......
 ```          
                 
                 
-# apply函数的实现
+## apply函数的实现
     
 ```js
     
-// Function.prototype.wxapply = function (thisArg, arrArg) {
-//     var fn = this
-//     thisArg = thisArg ? Object(thisArg) : window
-//     thisArg.fn = fn
-//     arrArg ? thisArg.fn(...arrArg) : thisArg.fn() //是否有传入参数
-//     delete thisArg.fn
-// }
+Function.prototype.wxapply = function (thisArg, arrArg) {
+    var fn = this
+    thisArg = thisArg ? Object(thisArg) : window
+    thisArg.fn = fn
+    arrArg ? thisArg.fn(...arrArg) : thisArg.fn() //是否有传入参数
+    delete thisArg.fn
+}
 
-// function foo(a, b, c) {
-//     console.log(a + b + c);
-// }
-// foo.wxapply({}, [10, 20, 30])
-// foo.wxapply({}, [10, 20, 30])
+function foo(a, b, c) {
+    console.log(a + b + c);
+}
+foo.wxapply({}, [10, 20, 30])
+foo.wxapply({}, [10, 20, 30])
 
-// // 实现 instanceof
-// function isPrototypeOf(obj) {
-//     var proto = this.prototype
-//     while (obj) {
-//         if (obj === proto) {
-//             return true
-//         }
-//         obj = Object.getPrototypeOf(obj)
-//     }
-//     return false
-// }
 
 // // 数组扁平化
 // function flatten(arr) {
@@ -988,37 +979,22 @@ Event.prototype.fire = function (sender, args) {
 
 // **浏览器事件传输机制原理**
 // 在浏览器中，事件传输机制是通过事件冒泡的方式来实现的，事件冒泡是从最近的元素到最远的元素，每个元素都会触发事件，事件的触发是通过事件冒泡的方式来实现的。
-
-
-// 宏任务微任务有哪些
-// script
-// setTimeout
-// setInterval
-// setImmediate
-// I/O
-// UI render
-// 微任务
-// microtask
-// macrotask
-// task
-// idle
-// promise
-// event loop
-// 事件循环
-// event loop是一个循环，每当有事件发生时，就会触发事件循环，事件循环会调用所有的事件处理函数，然后把事件处理函数的执行结果返回给事件循环，事件循环会把返回的结果再次传递给事件循环，以此类推，直到没有事件发生为止。
-
-
-// 浏览器的渲染
-// 
-
-
-
-
     
 ```          
-                
-                
-# 可迭代对象
+##  实现 instanceof
+```js
+function isPrototypeOf(obj) {
+    var proto = this.prototype
+    while (obj) {
+        if (obj === proto) {
+            return true
+        }
+        obj = Object.getPrototypeOf(obj)
+    }
+    return false
+}
+```  
+## 可迭代对象
     
 ```js
     
@@ -1063,7 +1039,7 @@ for(const item of iterabalObj){
 ```          
                 
                 
-# 监听对象操作
+## 监听对象操作
     
 ```js
     
@@ -1107,7 +1083,7 @@ obj.name = 'Kobe' //监听到name属性被设置了
 ```          
                 
                 
-# 响应式原理
+## 响应式原理
     
 ```js
     
@@ -1157,7 +1133,7 @@ objProxy.name = 'Lilei'
 ```          
                 
                 
-# 迭代器
+## 迭代器
     
 ```js
     
@@ -1206,7 +1182,7 @@ console.log(index); //3
 ```          
                 
                 
-# 自定义类的可迭代性
+## 自定义类的可迭代性
     
 ```js
     
@@ -1247,7 +1223,7 @@ for (item of classroom) {
 ```          
                 
                 
-# 内置创建可迭代对象
+## 内置创建可迭代对象
     
 ```js
     
@@ -1264,7 +1240,7 @@ console.log(iterator.next()); //{ value: undefined, done: true }
 ```          
                 
                 
-# 生成器参数问题
+## 生成器参数问题
     
 ```js
     
@@ -1296,7 +1272,7 @@ Generator.next(10)
 ```          
                 
                 
-# 生成器函数的执行流程
+## 生成器函数的执行流程
     
 ```js
     
@@ -1326,7 +1302,7 @@ console.log(Generator.next()); // { value: { name: 'tom', age: 18 }, done: false
 ```          
                 
                 
-# Proxy代理的使用
+## Proxy代理的使用
     
 ```js
     
@@ -1369,13 +1345,32 @@ const objProxy = new Proxy(obj, {
 // objProxy.name = "Kobe"; // 通过代理
 console.log(objProxy.name); // Kobe
 
-    
 ```          
+
+## 事件循环
+::: tip
+event loop是一个循环，每当有事件发生时，就会触发事件循环，事件循环会调用所有的事件处理函数，然后把事件处理函数的执行结果返回给事件循环，事件循环会把返回的结果再次传递给事件循环，以此类推，直到没有事件发生为止。
+:::
+
+### 宏任务
+- script
+- setTimeout
+- setInterval
+- setImmediate
+- I/O
+- macrotask
+- UI render
+- 浏览器的渲染
+### 微任务
+- microtask
+- task
+- idle
+- promise
+- event loop
                 
-                
-# js
+## 事件循环面试题
     
-```undefined
+```js
     
 // await 之后的代码属于微任务
 // async function a() {
@@ -1518,7 +1513,7 @@ console.log('script end')
 ```          
                 
                 
-# 生成器
+## 生成器
     
 ```js
     
@@ -1556,7 +1551,7 @@ Generator.next(); //4
 ```          
                 
                 
-# 事件总线
+## 事件总线
     
 ```js
     
@@ -1602,7 +1597,7 @@ eventBus.emit('a', { name: 'Tom' });
 ```          
                 
                 
-# 深拷贝
+## 深拷贝
     
 ```js
     
@@ -1659,7 +1654,7 @@ console.log(deepClone(obj1));
 ```          
                 
                 
-# 防抖函数
+## 防抖函数
     
 ```js
     
@@ -1690,7 +1685,7 @@ function debounce(fn, delay, isImmediately = true) {
 ```          
                 
                 
-# 节流函数
+## 节流函数
     
 ```js
     
@@ -1709,7 +1704,7 @@ function throttle(fn, delay) {
 ```          
                 
                 
-# Proxy其他捕获器
+## Proxy其他捕获器
     
 ```js
     
@@ -1755,7 +1750,7 @@ delete objProxy.name
 ```          
                 
                 
-# 原型
+## 原型
     
 ```js
     
@@ -1776,7 +1771,7 @@ console.log(p2.toString());
 ```          
                 
                 
-# 数组去重
+## 数组去重
     
 ```js
     

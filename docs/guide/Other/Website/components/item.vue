@@ -2,6 +2,7 @@
 
 interface Data {
     icon: string
+    _icon?: string
     title: string
     desc: string
     link: string
@@ -13,9 +14,10 @@ const { data } = defineProps<{ data: Data }>()
     <div class='item'>
         <a :href='data.link' target='_blank'>
             <div class='top'>
-                <div class="left">
+                <div class="left" v-if='data.icon'>
                     <img :src="data.icon" alt="">
                 </div>
+                <div v-else class='left'>{{ data._icon }}</div>
                 <div class="right">{{ data.title }}</div>
             </div>
             <div class="bot">{{ data.desc }}</div>

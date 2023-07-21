@@ -5,9 +5,59 @@ title: HTML&CSS
 ---
 # CSS 基础
 
-## CSS 选择器
 
-### 标签选择器
+## 单行文本溢出
+```css
+.overflow-example {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+## 多行文本溢出
+```css
+.multiline-overflow-example {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 指定要显示的行数 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+```
+## 修改滚动条样式
+```css
+/* 宽度和高度 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* 轨道 */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* 滑块 */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+/* 滑块悬停样式 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+/* 滑块颜色 */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+/* 滑道背景色 */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+```
+
+## 标签选择器
 
 - 通过标签名选择元素
 - 优点：可快速为同类型标签统一设置样式
@@ -19,7 +69,7 @@ h1 {
 }
 ```
 
-### 类选择器
+## 类选择器
 
 - 通过类名选择元素
 
@@ -29,7 +79,7 @@ h1 {
 }
 ```
 
-### id 选择器
+## id 选择器
 
 - 通过元素 id 属性选择元素
 
@@ -39,7 +89,7 @@ h1 {
 }
 ```
 
-### 通配符选择器
+## 通配符选择器
 
 - 选择页面所有元素
 - 用于清除内外边距
@@ -51,7 +101,7 @@ h1 {
 }
 ```
 
-### 相邻选择器
+## 相邻选择器
 
 - 选择所有指定元素的相邻后一个兄弟节点
 
@@ -71,7 +121,7 @@ h1 + p {
 }
 ```
 
-### 后代选择器
+## 后代选择器
 
 - 在所有后代节点中选
 
@@ -81,7 +131,7 @@ ul li {
 }
 ```
 
-### 子选择器
+## 子选择器
 
 - 只在亲儿子中选
 
@@ -91,7 +141,7 @@ div > a {
 }
 ```
 
-### 并集选择器
+## 并集选择器
 
 ```css
 h1,
@@ -101,7 +151,7 @@ h3 {
 }
 ```
 
-### 交集选择器
+## 交集选择器
 
 ```css
 /* good类的p元素 */
@@ -110,11 +160,11 @@ p.good {
 }
 ```
 
-### 伪类选择器
+## 伪类选择器
 
 - 根据元素状态或所处 DOM 结构选择元素
 
-#### 动态伪类选择器
+### 动态伪类选择器
 
 ```css
 按这个顺序声明
@@ -128,7 +178,7 @@ input:focus
 textarea:focus
 ```
 
-#### 结构伪类选择器(C3)
+### 结构伪类选择器(C3)
 
 - E:first-child
 - E:last-child
@@ -158,20 +208,20 @@ div > p:nth-of-type(2) {
 }
 ```
 
-### 属性选择器
+## 属性选择器
 
 - E[att]
 - E[att="val"]
 - E[att^="val"]
 - E[att$="val"]
 
-### 伪元素选择器
+## 伪元素选择器
 
 - 伪元素选择器利用 CSS 创建新标签元素，而不需要 HTML 标签，从而简化 HTML 结构
 - before 和 after 创建了一个行内元素，在 DOM 树中无法找到，故为伪元素
 - 必须有 content 属性
 
-#### 伪元素字体图标
+### 伪元素字体图标
 
 ```css
 p::before {
@@ -183,7 +233,7 @@ p::before {
 }
 ```
 
-#### 伪元素清除浮动
+### 伪元素清除浮动
 
 ```css
 1、额外标签法（隔墙法）

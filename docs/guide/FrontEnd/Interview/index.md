@@ -919,7 +919,7 @@ let const 不会挂载到window上
 
 - 让组件渲染到父组件以外（vue Teleport）
 
-  ```react
+  ```jsx
   import React from 'react'
   class Protals extends React.component {
       render(){
@@ -946,7 +946,7 @@ let const 不会挂载到window上
 
 #### Context(组件信息共享)
 
-```react
+```jsx
 export const ThemeContext = React.createContext('light')
 class Root extends React.component {
 	// 根组件    
@@ -989,7 +989,7 @@ class Child extends React.component {
 
 - React.Suspense
 
-  ```react
+  ```jsx
   const AsyncCom = React.lazy(() => import('@/componnet'))
   
   render(){

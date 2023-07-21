@@ -6,7 +6,7 @@ categories:
 tags:
   - Vue
 ---
-
+# Vue常见API
 ## reactive
 
 ```js

@@ -7,6 +7,7 @@ tags:
   - React
 ---
 
+# React：一个专注于UI的javascript前端库
 ## Redux
 
 > redux 是一个状态管理库，用于对整个 App 组件的共享状态和数据进行集中式管理

@@ -2,9 +2,12 @@
 layout: home
 
 hero:
-  name: Xi-Yuer的博客网站
+  name: Xi-Yuer的笔记网站
   text: 既往不恋，纵情向前!
-  tagline: blog website...
+  tagline: a note website...
+  image:
+    src: logo.png
+    alt: alt
   actions:
     - theme: brand
       text: 快速开始
