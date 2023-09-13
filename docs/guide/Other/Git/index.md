@@ -228,3 +228,98 @@ git clone 远程仓库地址
   - 推送代码是需要验证权限的，公开仓库虽然可以任意访问但并不是所有的用户都可以推送代码（推送权限可以在仓库中设置）。所以推送时需要你输入有权限用户的用户名和密码
 
   ![img](https://s2.loli.net/2022/06/13/fGbmlnYAxaIjTzF.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+# gitingnore文件
+
+## gitignore 忽略规则简单说明
+
+| 代码         | 说明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| #            | 表示此为注释,将被 Git 忽略                                   |
+| src          | 忽略所有src文件夹及其以下文件夹和文件                        |
+| *.js         | 忽略所有 .js 结尾的文件                                      |
+| !lib.js      | 但 lib.js 除外                                               |
+| /TODO        | 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO         |
+| build/       | 忽略 build/目录下的所有文件，包括 build 文件夹               |
+| doc/*.txt    | 忽略 doc/notes.txt 但不包括 doc/server/arch.txt              |
+| bin/:        | 忽略当前路径下的 bin 文件夹，该文件夹下的所有内容都会被忽略，不忽略 bin 文件 |
+| /bin:        | 忽略根目录下的 bin 文件                                      |
+| /*.c:        | 忽略当前路径下 以.c结尾的文件，但不会忽略 build/cat.c        |
+| debug/*.obj: | 忽略 debug/io.obj，不忽略 debug/common/io.obj 和 tools/debug/io.obj |
+| **/foo:      | 忽略/foo,a/foo,a/b/foo 等                                    |
+| a/**/b:      | 忽略 a/b, a/x/b,a/x/y/b 等                                   |
+| !/bin/run.sh | 不忽略 bin 目录下的 run.sh 文件                              |
+| *.log:       | 忽略所有 .log 文件                                           |
+| config.php:  | 忽略当前路径的 config.php 文件                               |
+| /mtk/        | 过滤整个文件夹                                               |
+| /mtk/do.c    | 过滤某个具体文件                                             |
+| *.zip        | 过滤所有.zip 文件                                            |
+| !*.zip       | 指定要将哪些文件添加到版本管理                               |
+| fd1/*        | 忽略目录 fd1 下的全部内容                                    |
+
+
+
+## 前端常用规则
+
+
+
+```bash
+> # 众多无视的扩展
+*.bak
+*.patch
+*.diff
+*.err
+
+# git冲突合并的临时文件
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
+*.sass-cache
+*.tmp.html
+*.dump
+
+#操作系统或编辑器文件夹
+.DS_Store
+._*
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
+thumbs.db
+*.iml
+
+# F忽略的文件夹
+.hg
+.svn
+.CVS
+.idea
+.
+node_modules/
+jscoverage_lib/
+bower_components/
+dist/
+build/
+
+```
+
